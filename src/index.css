@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sakura-50: #fff5f7;
+  --color-sakura-100: #ffe4e9;
+  --color-sakura-200: #ffd1dc;
+  --color-sakura-300: #fba8bc;
+  --color-sakura-400: #f472b6;
+  --color-sakura-500: #ec4899;
+  --color-sakura-600: #db2777;
+  --color-sakura-700: #be185d;
+  --color-sakura-800: #9d174d;
+  --color-sakura-900: #831843;
+
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #fbf7ed;
+  --color-cream-200: #f5edd5;
+  --color-cream-300: #eedfbc;
+  --color-cream-400: #e5cca0;
+
+  --color-mint-50: #f2fdf7;
+  --color-mint-100: #e6fbf0;
+  --color-mint-200: #c0f7dc;
+  --color-mint-300: #8aeec1;
+  --color-mint-400: #4cdfa0;
+
+  --color-lavender-50: #faf8ff;
+  --color-lavender-100: #f3e8ff;
+  --color-lavender-200: #e9d5ff;
+  --color-lavender-300: #d8b4fe;
+  --color-lavender-400: #c084fc;
+
+  --font-serifJp: "Noto Serif JP", serif;
+  --font-gothicJp: "Zen Maru Gothic", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-float-fast: float 3s ease-in-out infinite;
+  --animate-pulse-subtle: pulseSubtle 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulseSubtle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.03); }
+  }
+}
+
+body {
+  background-color: #fdfbf7;
+  font-family: "Outfit", sans-serif;
+  color: #374151;
+  overflow-x: hidden;
+  cursor: none; /* Hide default cursor to enable custom cursor */
+}
+
+/* Custom styled thin pink scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fdfbf7;
+}
+::-webkit-scrollbar-thumb {
+  background: #fba8bc;
+  border-radius: 4px;
+  border: 2px solid #fdfbf7;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background-color: #ec4899;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.custom-cursor-follower {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(236, 72, 153, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.08s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+/* Cursor Hover states */
+body.hovering .custom-cursor {
+  width: 8px;
+  height: 8px;
+  background-color: #be185d;
+}
+
+body.hovering .custom-cursor-follower {
+  width: 50px;
+  height: 50px;
+  border-color: rgba(190, 24, 93, 0.8);
+  background-color: rgba(251, 207, 232, 0.2);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-panel-pink {
+  background: rgba(255, 245, 247, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(251, 180, 198, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.15);
+}
+
+/* Animation Keyframes */
+@keyframes sakuraFall {
+  0% {
+    transform: translateY(-5vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg) translateX(120px);
+    opacity: 0;
+  }
+}
+
+@keyframes birdFly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(150px, -70px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes cloudMove {
+  0% {
+    transform: translateX(-15%);
+  }
+  100% {
+    transform: translateX(15%);
+  }
+}
+
+@keyframes waveWave {
+  0%, 100% {
+    transform: translateY(0) scaleY(1);
+  }
+  50% {
+    transform: translateY(-5px) scaleY(1.03);
+  }
+}
+
+@keyframes lanternFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes windSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Utility Animations - Added hardware acceleration to fix browser redraw jittering */
+.animate-sakura-fall {
+  animation: sakuraFall 15s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.animate-bird-fly {
+  animation: birdFly 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-cloud-move-slow {
+  animation: cloudMove 40s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-cloud-move-medium {
+  animation: cloudMove 25s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-wave-slow {
+  animation: waveWave 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-lantern-float {
+  animation: lanternFloat 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-wind-sway {
+  animation: windSway 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    cursor: auto !important; /* Restore cursor on mobile */
+  }
+  .custom-cursor, .custom-cursor-follower {
+    display: none !important;
+  }
+}
